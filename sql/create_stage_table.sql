@@ -9,7 +9,7 @@ create table BatchDate (
 
 drop table if exists CashTransaction;
 create table CashTransaction (
-    CT_CA_ID int not null,
+    CT_CA_ID bigint not null,
     CT_DTS datetime not null,
     CT_AMT decimal(10,2) not null,
     CT_NAME varchar(100) not null
@@ -20,7 +20,7 @@ create table CustomerMgmt (
     ActionType varchar(9) check(ActionType in ('NEW', 'ADDACCT', 'UPDCUST', 'UPDACCT', 'CLOSEACCT', 'INACT')),
     ActionTS text,
 
-    C_ID int not null,
+    C_ID bigint not null,
     C_TAX_ID varchar(20),
     C_GNDR varchar(1),
     C_TIER int,
@@ -55,10 +55,10 @@ create table CustomerMgmt (
     C_LCL_TX_ID varchar(4),
     C_NAT_TX_ID varchar(4),
 
-    CA_ID int not null,
+    CA_ID bigint not null,
     CA_TAX_ST int,
 
-    CA_B_ID int,
+    CA_B_ID bigint,
     CA_NAME varchar(50)
 );
 
@@ -69,12 +69,12 @@ create table DailyMarket (
     DM_CLOSE decimal(8,2) not null,
     DM_HIGH decimal(8,2) not null,
     DM_LOW decimal(8,2) not null,
-    DM_VOL int not null
+    DM_VOL bigint not null
 );
 
 drop table if exists Date;
 create table Date (
-    SK_DateID int not null,
+    SK_DateID bigint not null,
     DateValue varchar(20) not null,
     DateDesc varchar(20) not null,
     CalendarYearID int not null,
@@ -153,16 +153,16 @@ create table FINWIRE_FIN (
 
 drop table if exists HoldingHistory;
 create table HoldingHistory (
-    HH_H_T_ID int not null,
-    HH_T_ID int not null,
+    HH_H_T_ID bigint not null,
+    HH_T_ID bigint not null,
     HH_BEFORE_QTY int not null,
     HH_AFTER_QTY int not null
 );
 
 drop table if exists HR;
 create table HR (
-    EmployeeID int not null,
-    ManagerID int not null,
+    EmployeeID bigint not null,
+    ManagerID bigint not null,
     EmployeeFirstName varchar(30) not null,
     EmployeeLastName varchar(30) not null,
     EmployeeMI varchar(1),
@@ -202,7 +202,7 @@ create table Prospect (
     OwnOrRentFlag varchar(1),
     Employer varchar(30),
     NumberCreditCards int,
-    NetWorth int
+    NetWorth bigint
 );
 
 drop table if exists StatusType;
@@ -220,7 +220,7 @@ create table TaxRate (
 
 drop table if exists Time;
 create table Time (
-    SK_TimeID int not null,
+    SK_TimeID bigint not null,
     TimeValue varchar(20) not null,
     HourID int not null,
     HourDesc varchar(20) not null,
@@ -234,22 +234,22 @@ create table Time (
 
 drop table if exists TradeHistory;
 create table TradeHistory (
-    TH_T_ID int not null,
+    TH_T_ID bigint not null,
     TH_DTS datetime not null,
     TH_ST_ID varchar(4) not null
 );
 
 drop table if exists Trade;
 create table Trade (
-    T_ID int not null,
+    T_ID bigint not null,
     T_DTS datetime not null,
     T_ST_ID varchar(4) not null,
     T_TT_ID varchar(3) not null,
     T_IS_CASH bit,
     T_S_SYMB varchar(15) not null,
     T_QTY int check(T_QTY>0),
-    T_BID_PRICE int check(T_BID_PRICE>0),
-    T_CA_ID int not null,
+    T_BID_PRICE decimal(8,2) check(T_BID_PRICE>0),
+    T_CA_ID bigint not null,
     T_EXEC_NAME varchar(49) not null,
     T_TRADE_PRICE decimal(8,2) check(T_TRADE_PRICE>0),
     T_CHRG decimal(10,2) check(T_CHRG>=0),
@@ -267,7 +267,7 @@ create table TradeType (
 
 drop table if exists WatchHistory;
 create table WatchHistory (
-    W_C_ID int not null,
+    W_C_ID bigint not null,
     W_S_SYMB varchar(15) not null,
     W_DTS datetime not null,
     W_ACTION varchar(4) not null
