@@ -138,7 +138,7 @@ EndDate DATE Not NULL
 );
 
 drop table if exists DimTime;
-create table DimTim (
+create table DimTime (
 SK_TimeID bigint Not NULL ,
 TimeValue TIME Not NULL ,
 HourID decimal(2,0) Not NULL ,
