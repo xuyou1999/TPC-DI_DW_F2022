@@ -55,7 +55,7 @@ create table CustomerMgmt (
     C_LCL_TX_ID varchar(4),
     C_NAT_TX_ID varchar(4),
 
-    CA_ID bigint not null,
+    CA_ID bigint,
     CA_TAX_ST int,
 
     CA_B_ID bigint,
