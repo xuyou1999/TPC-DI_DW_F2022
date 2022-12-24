@@ -17,7 +17,7 @@ select
 	StateProvince as StateProv,
 	Country as Country,
 	Description as Description,
-	FoundingDate as FoundingDate,
+	cast(FoundingDate as date) as FoundingDate,
 	cast((case when ST_NAME = 'Inactive' then 0
 		else 1 end) as bit) as IsCurrent,
 	1 as BatchID,
