@@ -231,6 +231,7 @@ table4 as (
 select 
 ActionType,
 C_ID,
+BatchID,
 ROW_NUMBER() over(partition by C_ID order by new_ActionTS desc) as row_number,
 new_ActionTS,
 new_C_TAX_ID,
