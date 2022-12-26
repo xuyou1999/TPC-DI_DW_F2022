@@ -5,7 +5,7 @@ use tpc_di_datawarehouse;
 drop table if exists DimAccount;
 create table DimAccount (
 
-SK_AccountID bigint Not NULL ,
+SK_AccountID bigint identity(1,1) Not NULL ,
 AccountID bigint Not NULL ,
 SK_BrokerID bigint Not NULL ,
 SK_CustomerID bigint Not NULL ,
