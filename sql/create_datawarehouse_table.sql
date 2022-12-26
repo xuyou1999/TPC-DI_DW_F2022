@@ -61,7 +61,7 @@ EndDate DATE Not NULL
 
 drop table if exists DimCustomer;
 create table DimCustomer (
-SK_CustomerID bigint Not NULL ,
+SK_CustomerID bigint identity(1,1) Not NULL ,
 CustomerID bigint Not NULL ,
 TaxID CHAR(20) Not NULL ,
 Status CHAR(10) Not NULL ,
