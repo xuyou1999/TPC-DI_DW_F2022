@@ -34,20 +34,20 @@ select *
 from table4
 )
 
-
 select
+	ROW_NUMBER() over(order by(select null)) as SK_SecurityID,
 	FINWIRE_SEC.Symbol as Symbol, 
 	FINWIRE_SEC.IssueType as Issue,
+	tpc_di_stage.dbo.StatusType.ST_NAME as Status,
 	FINWIRE_SEC.Name as Name,
 	FINWIRE_SEC.ExID as ExchangeID,
+	table5.SK_CompanyID as SK_CompanyID,
 	FINWIRE_SEC.ShOut as  SharesOutstanding, 
 	FINWIRE_SEC.FirstTradeDate as  FirstTrade,
 	FINWIRE_SEC.FirstTradeExchg as FirstTradeOnExchange,	FINWIRE_SEC.Dividend as Dividend,
-	table5.SK_CompanyID as SK_CompanyID,
-	tpc_di_stage.dbo.StatusType.ST_NAME as Status,
 	cast(1 as bit) as IsCurrent,
 	cast(1 as decimal) as BatchID, 
-	FINWIRE_SEC.PTS as EffectiveDate,
+	(convert(date, stuff(stuff(stuff(REPLACE(FINWIRE_SEC.PTS,'-',''), 9, 0, ' '), 12, 0, ':'), 15, 0, ':'))) as EffectiveDate,
 	cast('9999-12-31' as date) as Enddate
 
 from tpc_di_stage.dbo.FINWIRE_SEC
