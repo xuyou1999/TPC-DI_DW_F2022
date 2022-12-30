@@ -4,10 +4,78 @@ select
 	ST_NAME as Status,
 	CompanyName as Name,
 	IN_NAME as Industry,
-	SPrating as SPrating,
+	case when SPrating = 'AAA' 
+			or SPrating = 'AA'
+			or SPrating = 'AA+'
+			or SPrating = 'AA-' 
+			or SPrating = 'A'
+			or SPrating = 'A+' 
+			or SPrating = 'A-' 
+			or SPrating = 'BBB' 
+			or SPrating = 'BBB+' 
+			or SPrating = 'BBB-' 
+			or SPrating = 'BB' 
+			or SPrating = 'BB+' 
+			or SPrating = 'BB-' 
+			or SPrating = 'B' 
+			or SPrating = 'B+' 
+			or SPrating = 'B-' 
+			or SPrating = 'CCC' 
+			or SPrating = 'CCC+' 
+			or SPrating = 'CCC-' 
+			or SPrating = 'CC'
+			or SPrating = 'C' 
+			or SPrating = 'D' 
+			then SPrating
+		else null
+	end
+		as SPrating,
 	cast((case
-		when SPrating like 'A%' or SPrating like 'BBB%' then 0
-		else 1
+		when (SPrating = 'AAA' 
+			or SPrating = 'AA'
+			or SPrating = 'AA+'
+			or SPrating = 'AA-' 
+			or SPrating = 'A'
+			or SPrating = 'A+' 
+			or SPrating = 'A-' 
+			or SPrating = 'BBB' 
+			or SPrating = 'BBB+' 
+			or SPrating = 'BBB-' 
+			or SPrating = 'BB' 
+			or SPrating = 'BB+' 
+			or SPrating = 'BB-' 
+			or SPrating = 'B' 
+			or SPrating = 'B+' 
+			or SPrating = 'B-' 
+			or SPrating = 'CCC' 
+			or SPrating = 'CCC+' 
+			or SPrating = 'CCC-' 
+			or SPrating = 'CC'
+			or SPrating = 'C' 
+			or SPrating = 'D') and (SPrating like 'A%' or SPrating like 'BBB%') then 0
+		when (SPrating = 'AAA' 
+			or SPrating = 'AA'
+			or SPrating = 'AA+'
+			or SPrating = 'AA-' 
+			or SPrating = 'A'
+			or SPrating = 'A+' 
+			or SPrating = 'A-' 
+			or SPrating = 'BBB' 
+			or SPrating = 'BBB+' 
+			or SPrating = 'BBB-' 
+			or SPrating = 'BB' 
+			or SPrating = 'BB+' 
+			or SPrating = 'BB-' 
+			or SPrating = 'B' 
+			or SPrating = 'B+' 
+			or SPrating = 'B-' 
+			or SPrating = 'CCC' 
+			or SPrating = 'CCC+' 
+			or SPrating = 'CCC-' 
+			or SPrating = 'CC'
+			or SPrating = 'C' 
+			or SPrating = 'D') and not (SPrating like 'A%' or SPrating like 'BBB%') then 1
+		else null
 	end) as bit) as isLowGrade,
 	CEOname as CEO,
 	AddrLine1 as AddressLine1,
