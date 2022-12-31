@@ -42,7 +42,7 @@ NetWorth,
 CASE 
 	WHEN NetWorth > 1000000 OR Income > 200000 THEN 'HighValue'
 	WHEN NumberChildren > 3 OR NumberCreditCards > 5 THEN 'Expenses'
-	WHEN Age > 45 THEN @tag+'Boomer'
+	WHEN Age > 45 THEN 'Boomer'
 	WHEN Income < 50000 OR CreditRating < 600 OR NetWorth < 100000 THEN 'MoneyAlert'
 	WHEN NumberCars > 3 OR NumberCreditCards > 7 THEN 'Spender'
 	WHEN Age < 25 AND NetWorth > 1000000 THEN 'Inherited'
