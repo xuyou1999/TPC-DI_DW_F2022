@@ -48,7 +48,7 @@ BETWEEN 364 PRECEDING AND CURRENT ROW) as FiftyTwoWeekHigh,
 	   MIN(DM.DM_LOW) OVER(PARTITION BY DM_S_SYMB ORDER BY DM_DATE ROWS 
 BETWEEN 364 PRECEDING AND CURRENT ROW) as FiftyTwoWeekLow,
 		DD.DateValue as SK_FiftyTwoWeekLowDate,
-		SUM(table5.EPS) OVER(PARTITION BY table5.Quarter ORDER BY table5.Year ROWS 
+		SUM(cast(table5.EPS as bigint)) OVER(PARTITION BY table5.Quarter ORDER BY table5.Year ROWS 
 BETWEEN 4 PRECEDING AND CURRENT ROW) as PERatio,
 		((DS.Dividend/DM.DM_CLOSE) *100) as Yield,
 		cast(1 as decimal) as BatchID
