@@ -1,5 +1,5 @@
-drop database if exists tpc_di_datawarehouse;
-create database tpc_di_datawarehouse;
+--drop database if exists tpc_di_datawarehouse;
+--create database tpc_di_datawarehouse;
 use tpc_di_datawarehouse;
 
 drop table if exists DimAccount;

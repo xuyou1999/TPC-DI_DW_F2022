@@ -1,3 +1,4 @@
+use tpc_di_datawarehouse;
 drop table if exists DimSecurity;
 create table DimSecurity(
 SK_SecurityID bigint Not NULL ,
