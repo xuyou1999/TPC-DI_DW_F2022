@@ -60,4 +60,20 @@ FI_OUT_BASIC decimal(12,0) Not NULL ,
 FI_OUT_DILUT decimal(12,0) Not NULL
 );
 
+drop table if exists FactHoldings;
+create table FactHoldings (
+TradeID bigint Not NULL ,
+CurrentTradeID bigint Not Null ,
+SK_CustomerID bigint Not NULL ,
+SK_AccountID bigint Not NULL ,
+SK_SecurityID bigint Not NULL ,
+SK_CompanyID bigint Not NULL ,
+SK_DateID time(7)  ,               --change
+SK_TimeID time(7)  ,               --change
+CurrentPrice decimal(8,2) check (CurrentPrice > 0) ,
+CurrentHolding decimal(6,0) Not NULL ,
+BatchID decimal(5,0) Not Null 
+);
+
+
 --select * from DimBroker;
